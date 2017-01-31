@@ -44,3 +44,11 @@ script:
 
   # Ensure platform.sh CLI is installed and working.
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm platform --help || true'
+
+notifications:
+  slack:
+    rooms:
+      secure: NGM+38Kbi0wneYp8qHPpz+8ZIskKtJ0vsKIQyO1cIc23bASw6hBSDnLtDZ/KQnlhu+cYHYMQMYzXCOp4smRs5Qn3qLHsi1zYrEdljEERbCetKW8EalYbtXUtVZq+CIeSjwjAavxnr27J15bOkVoD0WU/eUpWFoyh59Fa1upnvPkkOtlBOqTGAINW80fXNBmby4LqjMADmu4Ju/+XeDjNX/GHGcEuMWkYgky91G88kx2MkB98psqo78d9FKvW7DJ8FVmgCf+PatTuFZ/Z4JfUI1ol55qapSK3PtreQdvm2ZXkbsAHyEnUMPTnkj83M3b1FfBkIFq3MTGgbryg9rExWMMVHUKF+oOdHehlFHc+Cm21bnFfU1LSumO2flblgmJJflEW9IOOCDdT+R0ukfbkJ0LVI0lRdrI9UCestzQuFuqtU5F8/JCXw9Zn33ZWy25IcJ4b1YpfYTMvi+LcX1b5ZeJVscZyuC0baPLRI9uolZWfk+bBT2/XAn+YAfI3AFt46ToHbmpLXovfT/tG7eRLj7bXnuJSMbDdnssjzidSNDy71D0AnfQtYZQxZrAB2ApjPXnpGk+XiJ8l0SCM3eMSfe3gFVKtGgYKJPAirgtDUU3cvvO/JjDSDhwDrndvRTBC7lw5ju+ntHvmCRzTF6ZAyLh8VjWLdA9eckM36e4WnN0=
+    on_success: change
+    on_failure: always
+
