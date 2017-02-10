@@ -24,13 +24,11 @@
 - name: Move platform.sh CLI into globally-accessible location.
   shell: >
     mv /root/.platformsh/bin/platform {{ platformsh_path }}
-    creates={{ platformsh_path }}
   when: not platformsh_bin.stat.exists
 
 - name: Move platform.sh CLI shell config into global profile.
   shell: >
     mv /root/.platformsh/shell-config.rc /etc/profile.d/platformsh-cli.sh
-    creates={{ platformsh_path }}
   when: not platformsh_bin.stat.exists
 
 - name: Update platform.sh CLI to latest version (if configured).
