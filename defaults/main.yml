@@ -1,3 +1,4 @@
 ---
 platformsh_path: /usr/local/bin/platform
 platformsh_keep_updated: false
+platformsh_shell_config_path: ''

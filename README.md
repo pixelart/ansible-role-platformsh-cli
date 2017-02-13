@@ -25,6 +25,19 @@ Set this to `true` to update the platform.sh CLI to the latest release every tim
 
 The executable name or full path to the PHP executable. This is defaulted to `php` if you don't override the variable.
 
+    platformsh_shell_config_path: ''
+    
+Since the platform.sh CLI shell config contains bash autocompletion it can't be put into `/etc/profile.d` and thus you must define a path, where to put the file to load it globally. For example on Ubuntu/Debian you can use `/etc/bash.bashrc.d` and add the following snippet to `/etc/bash.bashrc`:
+
+    if [ -d /etc/bash.bashrc.d ]; then
+      for i in /etc/bash.bashrc.d/*.sh; do
+        if [ -r $i ]; then
+          . $i
+        fi
+      done
+      unset i
+    fi 
+
 ## Dependencies
 
 None (but make sure you've installed PHP).

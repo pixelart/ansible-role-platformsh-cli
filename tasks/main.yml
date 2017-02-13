@@ -26,10 +26,10 @@
     mv /root/.platformsh/bin/platform {{ platformsh_path }}
   when: not platformsh_bin.stat.exists
 
-- name: Move platform.sh CLI shell config into global profile.
-  shell: >
-    mv /root/.platformsh/shell-config.rc /etc/profile.d/platformsh-cli.sh
-  when: not platformsh_bin.stat.exists
+- name: BC Ensure /etc/profile.d/platformsh-cli.sh is absent.
+  file:
+    path: /etc/profile.d/platformsh-cli.sh
+    state: absent
 
 - name: Update platform.sh CLI to latest version (if configured).
   shell: >
@@ -38,6 +38,11 @@
   failed_when: platformsh_update.rc != 0 and platformsh_update.rc != 1
   changed_when: platformsh_update.rc == 0
   when: platformsh_keep_updated
+
+- name: Move platform.sh CLI shell config into defined path
+  shell: >
+    mv /root/.platformsh/shell-config.rc {{ platformsh_shell_config_path }}/platformsh-cli.sh
+  when: platformsh_shell_config_path and (not platformsh_bin.stat.exists or platformsh_update == 0)
 
 - name: Remove temporary platform.sh CLI config directory
   file: path=/root/.platformsh state=absent
