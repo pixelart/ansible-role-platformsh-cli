@@ -18,6 +18,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add variable to update the platform.sh CLI on playbook run
 - Test the role on CentOS 7, Fedora 2.4, Ubuntu 16.04 and Debian 8
 
-[1.0.1]: https://github.com/pixelart/ansible-role-platformsh-cli/compare/1.0.1...1.1.0
+[1.1.0]: https://github.com/pixelart/ansible-role-platformsh-cli/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/pixelart/ansible-role-platformsh-cli/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/pixelart/ansible-role-platformsh-cli/compare/e69ef46...1.0.0
