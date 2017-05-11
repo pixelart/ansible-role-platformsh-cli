@@ -48,7 +48,7 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Ensure platform.sh CLI is installed and working.
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm platform --help || true'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm platform --version; [ $? == 129 ]'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
