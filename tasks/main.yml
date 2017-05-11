@@ -26,10 +26,10 @@
     mv /root/.platformsh/bin/platform {{ platformsh_path }}
   when: not platformsh_bin.stat.exists
 
-- name: BC Ensure /etc/profile.d/platformsh-cli.sh is absent.
-  file:
-    path: /etc/profile.d/platformsh-cli.sh
-    state: absent
+- name: Set CLI config in /etc/profile.d/platformsh-cli.sh
+  template:
+    src: platform-cli.sh.j2
+    dest: /etc/profile.d/platformsh-cli.sh
 
 - name: Update platform.sh CLI to latest version (if configured).
   shell: >
